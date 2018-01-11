@@ -22,43 +22,39 @@ public class Btsrun implements Screen {
     private final int WIDTH = 800;
 
     public Btsrun(btsgame game) {
-
-        p1 = new Runner(100, 100);
-        //initialize Sprite Batch
+         //initialize Sprite Batch
         this.batch = game.getBatch();
-        //setup camera
+        
         this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         //centre camera view
-        this.camera.position.set(WIDTH/2,HEIGHT/2,0);
+        this.camera.position.set(WIDTH / 2, HEIGHT / 2, 0);
         this.camera.update();
-        this.view = new FitViewport(WIDTH,HEIGHT,camera);
+        this.view = new FitViewport(WIDTH, HEIGHT, camera);
         view.apply();
+        
+        img = new Texture(Gdx.files.internal("seoul.png"));
+
+        p1 = new Runner(100, 100);
     }
 
-    public void create() {
-        batch = new SpriteBatch();
-        img = new Texture("seoul.png");
-
-
-    }
 
     @Override
     public void render(float deltaTime) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+
+        p1.update(deltaTime);
+        
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //moves the camera view with player
-        if(p1.getX()>200){
+        if (p1.getX() > 200) {
             camera.position.x = p1.getX();
-        }else{
+        } else {
             camera.position.x = 200;
         }
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        
         batch.draw(img, 0, 0);
         p1.render(batch);
-        
         batch.end();
     }
 
@@ -71,7 +67,6 @@ public class Btsrun implements Screen {
     @Override
     public void show() {
     }
-
 
     @Override
     public void resize(int width, int height) {

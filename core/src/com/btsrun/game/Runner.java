@@ -61,10 +61,10 @@ public class Runner {
         run = new Animation(1f / 10f, atlas.findRegions("character"));
 
         //load character images again but this time enables them to be flipped through
-        Array<AtlasRegion> runRFrames = atlas.findRegions("character");
-        for (int i = 0; i < runRFrames.size; i++) {
+        Array<TextureRegion> runRFrames = new Array<TextureRegion>();
+        for (int i = 1; i <= 6; i++) {
             //goes through each image
-            runRFrames.get(i).flip(true, false);
+            runRFrames.add(atlas.findRegion("character" + i));
         }
 
         //create the forward animation
@@ -94,7 +94,7 @@ public class Runner {
      */
     public void render(SpriteBatch batch) {
 
-        batch.draw(run.getKeyFrame(elapsed, true), x, y);
+        batch.draw(runR.getKeyFrame(elapsed, true), x, y);
 
     }
 
