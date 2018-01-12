@@ -80,7 +80,7 @@ public class Runner {
     }
 
     /**
-     *
+     *updates program by adding the program time to the time 
      * @param deltaTime
      */
     public void update(float deltaTime) {
@@ -89,12 +89,11 @@ public class Runner {
     }
 
     /**
-     *
+     *displays character during the program as animation
      * @param batch
      */
     public void render(SpriteBatch batch) {
-
-        batch.draw(runR.getKeyFrame(elapsed, true), x, y);
+        batch.draw(runR.getKeyFrame(elapsed, true), x, y, 90,90);
 
     }
 
