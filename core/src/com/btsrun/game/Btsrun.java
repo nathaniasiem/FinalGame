@@ -50,11 +50,7 @@ public class Btsrun implements Screen {
         } else {
             camera.position.x = 410;
         }
-        if(img.getBGX()>410){
-            camera.position.x = img.getBGX();
-        }else{
-            camera.position.x = 410;
-        }
+
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();

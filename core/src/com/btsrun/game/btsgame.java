@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class btsgame extends Game {
     
-    private SpriteBatch batch;//create game screen
+    private SpriteBatch batch;
     
     @Override
     public void create() {
