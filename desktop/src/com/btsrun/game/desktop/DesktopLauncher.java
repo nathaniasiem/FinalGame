@@ -1,12 +1,16 @@
 package com.btsrun.game.desktop;
 
+import com.btsrun.game.btsgame;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.btsrun.game.btrsrun;
+import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
+            TexturePacker.process("raw", "packed","character");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new btrsrun(), config);
+                config.width = 800;
+                config.height = 300;
+		new LwjglApplication(new btsgame(), config);
 	}
 }
