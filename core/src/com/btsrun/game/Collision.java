@@ -18,8 +18,14 @@ public class Collision {
     public Collision (){
         house = new Texture(Gdx.files.internal("house.png"));
         car = new Texture(Gdx.files.internal("car.png"));
- 
-    }
+    } 
+    
+
+    
+    
+    
+    
+    
     
 
     
