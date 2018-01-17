@@ -4,11 +4,14 @@
  */
 package com.btsrun.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -16,8 +19,14 @@ import com.badlogic.gdx.utils.Array;
  * @author simon7323
  */
 public class Runner {
+    
+    //Runner gravity
+    private float gravity;
+    
+    //the max of y axis that the runner can jump
+    private final float Max_dy = 15.0f;
+    
     //character location
-
     private float x;
     private float y;
     //character animation
@@ -32,6 +41,8 @@ public class Runner {
     private TextureRegion stand;
     //create texture atlas to help load images of character
     private TextureAtlas atlas;
+    
+
 
     /**
      * character constructor
@@ -40,9 +51,12 @@ public class Runner {
      * @param y
      */
     public Runner(float x, float y) {
+        
+        this.gravity = 0.7f;
         //set starting point
         this.x = x;
         this.y = y;
+        
 
         //character standing position
         this.dx = 0;
@@ -70,11 +84,18 @@ public class Runner {
         //create the forward animation
         runR = new Animation(1f / 10f, runRFrames);
     }
-
+/**
+ * Getting the X position of the runner
+ * @return the x value
+ */
     public float getX() {
         return x;
     }
 
+    /**
+     * Getting the Y position of the runner
+     * @return the y value;
+     */
     public float getY() {
         return y;
     }
@@ -85,7 +106,14 @@ public class Runner {
      */
     public void update(float deltaTime) {
         this.elapsed = this.elapsed + deltaTime;
-
+        
+        //if the user clicked the up keys the runner will jump over the car and house
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+            this.x = this.x - this.dx;
+            this.y = this.y + this.dy;
+            this.dy = gravity;
+            this.dx = 0;
+        }
     }
 
     /**
@@ -96,6 +124,7 @@ public class Runner {
         batch.draw(runR.getKeyFrame(elapsed, true), x, y, 90,90);
 
     }
+    
 
     // get rid of heavy objects
     public void dispose() {
