@@ -1,4 +1,7 @@
-
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.btsrun.game;
 
 import com.badlogic.gdx.Game;
@@ -6,10 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  *
- * @author fabed2976
+ * @author simon7323
  */
-public class btsgame extends Game{
-
+public class btsgame extends Game {
+    
     private SpriteBatch batch;
     
     @Override
@@ -27,5 +30,5 @@ public class btsgame extends Game{
     public void render(){
         super.render();
     }
-
+    
 }

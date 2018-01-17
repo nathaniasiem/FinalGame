@@ -1,45 +1,35 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.btsrun.game;
 
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-
 /**
  *
- * @author fabed2976
+ * @author simon7323
  */
 public class Runner {
-    
     //character location
+
     private float x;
     private float y;
-    
-    //chracter animation
+    //character animation
     private float dx;
     private float dy;
-    
-    //gravity for the player
-    private float gravity;
-    
-    //the maximum of gravity that the runner can jump
-    private final float Max_DY = 13.0f;
-    
-    //the time of //time of program running
+    //time of program running
     private float elapsed;
-    
     //animation variables to allow player movement
     private Animation<TextureRegion> run;
     private Animation<TextureRegion> runR;
-    
     //pictures of standing character
     private TextureRegion stand;
-    
     //create texture atlas to help load images of character
     private TextureAtlas atlas;
 
@@ -58,9 +48,6 @@ public class Runner {
         this.dx = 0;
         this.dy = 0;
 
-        //intialize the gravity
-        this.gravity = 0.9f;
-        
         //no animation at starting point
         this.elapsed = 0;
 
@@ -83,17 +70,11 @@ public class Runner {
         //create the forward animation
         runR = new Animation(1f / 10f, runRFrames);
     }
-/**
- * Getting the X position of the runner
- * @return the x value
- */
+
     public float getX() {
         return x;
     }
-/**
- * Getting the Y position of the runner
- * @return the y value
- */
+
     public float getY() {
         return y;
     }
@@ -104,16 +85,6 @@ public class Runner {
      */
     public void update(float deltaTime) {
         this.elapsed = this.elapsed + deltaTime;
-        
-        //if you pressed the keys up button
-        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-            this.dy = 15;
-        }
-        
-        //gravity
-        if(dy > -Max_DY ){
-            this.dy -= gravity;
-        }
 
     }
 
@@ -131,6 +102,3 @@ public class Runner {
         atlas.dispose();
     }
 }
-    
-   
-

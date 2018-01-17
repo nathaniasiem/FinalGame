@@ -1,4 +1,7 @@
-
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.btsrun.game;
 
 import com.badlogic.gdx.Gdx;
@@ -8,9 +11,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  *
- * @author fabed2976
+ * @author simon7323
  */
 public class Background {
+
     OrthographicCamera cam;
     Texture background;
     float bgX1, bgY2;
@@ -52,4 +56,3 @@ public class Background {
 
     }
 }
-
