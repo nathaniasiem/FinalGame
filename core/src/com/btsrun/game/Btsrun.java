@@ -42,7 +42,7 @@ public class Btsrun implements Screen {
     public void render(float deltaTime) {
         
         p1.update(deltaTime);
-        
+        img.update(deltaTime);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //moves the camera view with player
         if (p1.getX() > 410) {
