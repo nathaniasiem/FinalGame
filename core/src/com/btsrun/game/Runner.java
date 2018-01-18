@@ -19,13 +19,11 @@ import com.badlogic.gdx.utils.Array;
  * @author simon7323
  */
 public class Runner {
-    
+
     //Runner gravity
     private float gravity;
-    
     //the max of y axis that the runner can jump
     private final float Max_dy = 15.0f;
-    
     //character location
     private float x;
     private float y;
@@ -41,8 +39,6 @@ public class Runner {
     private TextureRegion stand;
     //create texture atlas to help load images of character
     private TextureAtlas atlas;
-    
-
 
     /**
      * character constructor
@@ -51,12 +47,12 @@ public class Runner {
      * @param y
      */
     public Runner(float x, float y) {
-        
+
         this.gravity = 0.7f;
         //set starting point
         this.x = x;
         this.y = y;
-        
+
 
         //character standing position
         this.dx = 0;
@@ -84,16 +80,19 @@ public class Runner {
         //create the forward animation
         runR = new Animation(1f / 10f, runRFrames);
     }
-/**
- * Getting the X position of the runner
- * @return the x value
- */
+
+    /**
+     * Getting the X position of the runner
+     *
+     * @return the x value
+     */
     public float getX() {
         return x;
     }
 
     /**
      * Getting the Y position of the runner
+     *
      * @return the y value;
      */
     public float getY() {
@@ -101,30 +100,35 @@ public class Runner {
     }
 
     /**
-     *updates program by adding the program time to the time 
+     * updates program by adding the program time to the time
+     *
      * @param deltaTime
      */
     public void update(float deltaTime) {
-        this.elapsed = this.elapsed + deltaTime;
         
-        //if the user clicked the up keys the runner will jump over the car and house
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            this.x = this.x - this.dx;
-            this.y = this.y + this.dy;
-            this.dy = gravity;
-            this.dx = 0;
+        this.elapsed = this.elapsed + deltaTime;
+        this.dy -= gravity;
+        this.x = this.x - this.dx;
+        this.y = this.y + this.dy;
+        
+        //if the user clicked the up key the runner will jump over the car and house
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            this.dy = 10;
+            this.y = 0;
+            this.dy += gravity;
         }
+
     }
 
     /**
-     *displays character during the program as animation
+     * displays character during the program as animation
+     *
      * @param batch
      */
     public void render(SpriteBatch batch) {
-        batch.draw(runR.getKeyFrame(elapsed, true), x, y, 90,90);
+        batch.draw(runR.getKeyFrame(elapsed, true), x, y, 90, 90);
 
     }
-    
 
     // get rid of heavy objects
     public void dispose() {
