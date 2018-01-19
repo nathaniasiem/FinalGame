@@ -44,11 +44,9 @@ public class Background {
     }
 
     public void render(SpriteBatch batch) {
-       while(true){
            batch.draw(background, bgX1, bgY1);
            batch.draw(background2, bgX2, bgY2);
-       }
-       
+             
     }
 
     public void update(float deltaTime) {
@@ -59,6 +57,8 @@ public class Background {
             this.elapsed = bgX1 + this.elapsed;
             bgX2 = bgX2 + background.getWidth();
             this.elapsed = bgX2 + this.elapsed;
+        }if(bgX1==background.getWidth()){
+            bgX1 =bgX1+bgX2;
         }
     }
 
