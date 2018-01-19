@@ -49,7 +49,7 @@ public class Runner {
         this.dy = 0;
 
         //no animation at starting point
-        this.elapsed = 0;  
+        this.elapsed = 0;
 
         //load images into texture atlas
         this.atlas = new TextureAtlas("packed/runner.atlas");
@@ -71,6 +71,9 @@ public class Runner {
         runR = new Animation(1f / 10f, runRFrames);
     }
 
+    public void collision() {
+    }
+
     public float getX() {
         return x;
     }
@@ -80,7 +83,8 @@ public class Runner {
     }
 
     /**
-     *updates program by adding the program time to the time 
+     * updates program by adding the program time to the time
+     *
      * @param deltaTime
      */
     public void update(float deltaTime) {
@@ -89,11 +93,12 @@ public class Runner {
     }
 
     /**
-     *displays character during the program as animation
+     * displays character during the program as animation
+     *
      * @param batch
      */
     public void render(SpriteBatch batch) {
-        batch.draw(runR.getKeyFrame(elapsed, true), x, y, 90,90);
+        batch.draw(runR.getKeyFrame(elapsed, true), x, y, 90, 90);
 
     }
 
