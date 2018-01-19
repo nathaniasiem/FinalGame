@@ -44,8 +44,11 @@ public class Background {
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(background, bgX1, bgY1);
-        batch.draw(background2, bgX2, bgY2);
+       while(true){
+           batch.draw(background, bgX1, bgY1);
+           batch.draw(background2, bgX2, bgY2);
+       }
+       
     }
 
     public void update(float deltaTime) {
