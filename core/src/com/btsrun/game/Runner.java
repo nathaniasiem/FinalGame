@@ -106,19 +106,24 @@ public class Runner {
      */
     public void update(float deltaTime) {
         
+        //making the character with the deltaTime
         this.elapsed = this.elapsed + deltaTime;
-        this.dy -= gravity;
-        this.x = this.x - this.dx;
-        this.y = this.y + this.dy;
         
-        //if the user clicked the up key the runner will jump over the car and house
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            this.dy = 10;
-            this.y = 0;
-            this.dy += gravity;
-        }
+        //the starting position of the runner
+        this.y = 0;
 
-    }
+        //if the user clicked the up key the runner will jump over the car and house
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            //how high the runner can jump
+            this.dy = 70;
+            //the gravity will go up
+            this.dy += gravity;
+            this.x = this.x + this.dx;
+            this.y = this.y + this.dy;
+        }
+            this.dy -= gravity;
+        }
+       
 
     /**
      * displays character during the program as animation
