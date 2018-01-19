@@ -49,7 +49,7 @@ public class Runner {
         this.dy = 0;
 
         //no animation at starting point
-        this.elapsed = 0;
+        this.elapsed = 0;  
 
         //load images into texture atlas
         this.atlas = new TextureAtlas("packed/runner.atlas");

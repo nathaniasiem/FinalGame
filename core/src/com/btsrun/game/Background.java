@@ -46,19 +46,19 @@ public class Background {
     public void render(SpriteBatch batch) {
            batch.draw(background, bgX1, bgY1);
            batch.draw(background2, bgX2, bgY2);
-             
+       
+       
     }
 
     public void update(float deltaTime) {
         bgX1 -= deltaTime * speed;
         bgX2 -= deltaTime * speed;
-        if (bgX1 + background.getWidth() < 0 && bgX2 + background.getWidth() < 0) {
-            bgX1 = bgX1 + background.getWidth();
-            this.elapsed = bgX1 + this.elapsed;
-            bgX2 = bgX2 + background.getWidth();
-            this.elapsed = bgX2 + this.elapsed;
-        }if(bgX1==background.getWidth()){
-            bgX1 =bgX1+bgX2;
+        if (bgX1 + background.getWidth() < 0) {
+            bgX1 = bgX2 + background2.getWidth();
+  
+        }if( bgX2 + background2.getWidth() < 0){
+            bgX2 = bgX1 + background.getWidth();
+          
         }
     }
 
