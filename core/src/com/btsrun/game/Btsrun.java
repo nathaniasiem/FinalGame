@@ -15,6 +15,7 @@ public class Btsrun implements Screen {
     private Runner p1;
     SpriteBatch batch;
     private Background img;
+    private Enemy trouble;
     private OrthographicCamera camera;
     private Viewport view;
     //create game screen
@@ -35,6 +36,7 @@ public class Btsrun implements Screen {
         img = new Background();
         
         p1 = new Runner(0, 0);
+        trouble = new Enemy();
         
     }
     
@@ -43,6 +45,7 @@ public class Btsrun implements Screen {
         
         p1.update(deltaTime);
         img.update(deltaTime);
+        trouble.update(deltaTime);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //moves the camera view with player
         if (p1.getX() > 410) {
@@ -56,6 +59,7 @@ public class Btsrun implements Screen {
         batch.begin();
         img.render(batch);
         p1.render(batch);
+        trouble.render(batch);
         batch.end();
     }
     
