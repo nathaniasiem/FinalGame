@@ -1,3 +1,5 @@
+package com.btsrun.game;
+
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,7 +22,7 @@ public class Enemy {
     Rectangle B;
     float cx, cy;
     float bx, by;
-    private float x,y;
+    private float x, y;
     public static int randNum;
     private float elapsed;
 
@@ -31,24 +33,21 @@ public class Enemy {
         cy = 0;
         bx = 0;
         by = 0;
-        x=0;
-        y=0;
+        x = 0;
+        y = 0;
         elapsed = 0;
-        C = new Rectangle(x,y,car.getWidth(),car.getHeight());
-        B = new Rectangle (x,y,building.getWidth(),building.getHeight());
+        C = new Rectangle(x, y, car.getWidth(), car.getHeight());
+        B = new Rectangle(x, y, building.getWidth(), building.getHeight());
 
-    }
-
-    public void RandGen() {
-        randNum = (int) (Math.random() * 2);
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(car, cx, cy);
-        batch.draw(building, bx, by);
+        batch.draw(car, cx, cy, 70, 70);
+        batch.draw(building, bx, by, 90, 90);
     }
 
     public void update(float deltaTime) {
+        randNum = (int) (Math.random() * 2);
         elapsed += deltaTime;
         C.setPosition(x, y);
         B.setPosition(x, y);

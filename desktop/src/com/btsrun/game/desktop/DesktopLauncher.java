@@ -11,6 +11,6 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
                 config.width = 800;
                 config.height = 300;
-		new LwjglApplication(new btsgame(), config);
+		new LwjglApplication(new btsgame(), config); 
 	}
 }

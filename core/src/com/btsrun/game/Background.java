@@ -15,7 +15,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class Background {
 
-    OrthographicCamera cam;
     Texture background;
     Texture background2;
     float bgX1, bgY1;
