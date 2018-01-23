@@ -4,6 +4,8 @@
  */
 package com.btsrun.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -32,6 +34,7 @@ public class Runner {
     private TextureRegion stand;
     //create texture atlas to help load images of character
     private TextureAtlas atlas;
+    private float gravity;
 
     /**
      * character constructor
@@ -47,6 +50,8 @@ public class Runner {
         //character standing position
         this.dx = 0;
         this.dy = 0;
+
+        this.gravity = 0.7f;
 
         //no animation at starting point
         this.elapsed = 0;
@@ -71,9 +76,6 @@ public class Runner {
         runR = new Animation(1f / 10f, runRFrames);
     }
 
-    public void collision() {
-    }
-
     public float getX() {
         return x;
     }
@@ -90,7 +92,23 @@ public class Runner {
     public void update(float deltaTime) {
         this.elapsed = this.elapsed + deltaTime;
 
+        this.y = 0;
+
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            this.dy = 80;
+            this.dy += gravity;
+            this.x = this.x + this.dx;
+            this.y = this.y + this.dy;
+
+        }
+        this.dy -= gravity;
+
     }
+
+    //public void collide(Obstacle car) {
+        
+        
+    //}
 
     /**
      * displays character during the program as animation

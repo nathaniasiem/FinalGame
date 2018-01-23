@@ -2,6 +2,7 @@ package com.btsrun.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,9 +16,10 @@ public class Btsrun implements Screen {
     private Runner p1;
     SpriteBatch batch;
     private Background img;
-    private Enemy trouble;
+    private Obstacle trouble;
     private OrthographicCamera camera;
     private Viewport view;
+    private Music musicPlay;
     //create game screen
     private final int HEIGHT = 300;
     private final int WIDTH = 800;
@@ -36,9 +38,17 @@ public class Btsrun implements Screen {
         img = new Background();
         
         p1 = new Runner(0, 0);
-        trouble = new Enemy();
-        
+        trouble = new Obstacle();
+        musicPlay = Gdx.audio.newMusic(Gdx.files.internal("RUN.mp3"));
+        musicPlay.play();
     }
+    
+   public void collide(){
+       if(p1.getX() == trouble.bx){
+           
+           
+       }
+  }
     
     @Override
     public void render(float deltaTime) {
@@ -60,6 +70,8 @@ public class Btsrun implements Screen {
         img.render(batch);
         p1.render(batch);
         trouble.render(batch);
+        trouble.randomCar(WIDTH);
+        trouble.randomBuild(WIDTH);
         batch.end();
     }
     
