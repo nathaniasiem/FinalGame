@@ -111,14 +111,7 @@ public class Runner {
 
     }
 
-    public boolean collide(Rectangle C) {
-
-        if (C.overlaps(R)) {
-            return true;
-        }
-        return false;
-    }
-
+   
     /**
      * displays character during the program as animation
      *

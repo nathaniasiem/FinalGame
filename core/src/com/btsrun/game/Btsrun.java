@@ -25,79 +25,93 @@ public class Btsrun implements Screen {
     //create game screen
     private final int HEIGHT = 300;
     private final int WIDTH = 800;
-    
+    boolean end = false;
+    boolean dead = false;
+
     public Btsrun(btsgame game) {
         //initialize Sprite Batch
         this.batch = game.getBatch();
-        
+
         this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         //centre camera view
         this.camera.position.set(WIDTH / 2, HEIGHT / 2, 0);
         this.camera.update();
         this.view = new FitViewport(WIDTH, HEIGHT, camera);
         view.apply();
-        
+
         img = new Background();
-        
+
         p1 = new Runner(0, 0);
         trouble = new Obstacle();
-       
+
+
         musicPlay = Gdx.audio.newMusic(Gdx.files.internal("RUN.mp3"));
         musicPlay.play();
     }
-    
-    
+
     @Override
     public void render(float deltaTime) {
-        
-        p1.update(deltaTime);
-        img.update(deltaTime);
-        trouble.update(deltaTime);
-        if(p1.collide(Rectangle.tmp)){
-            gameOver = gameOver;
-        }
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //moves the camera view with player
-        if (p1.getX() > 410) {
-            camera.position.x = p1.getX();
-        } else {
-            camera.position.x = 410;
-        }
 
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        img.render(batch);
-        p1.render(batch);
-        trouble.render(batch);
-        trouble.randomCar(WIDTH);
-        trouble.randomBuild(WIDTH);
-        batch.end();
+        if (!end) {
+            if (!dead) {
+                p1.update(deltaTime);
+                img.update(deltaTime);
+                trouble.update(deltaTime);
+
+                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                //moves the camera view with player
+                if (p1.getX() > 410) {
+                    camera.position.x = p1.getX();
+                } else {
+                    camera.position.x = 410;
+                }
+
+                camera.update();
+                batch.setProjectionMatrix(camera.combined);
+                batch.begin();
+                img.render(batch);
+                p1.render(batch);
+                trouble.render(batch);
+                trouble.randomCar(WIDTH);
+                trouble.randomBuild(WIDTH);
+                batch.end();
+            }
+        }
     }
-    
+ public void collide(Rectangle C,Rectangle R,Rectangle B) {
+
+        if (R.overlaps(C)) {
+            batch.draw(gameOver, WIDTH, HEIGHT); 
+            end = true;
+        }else if(R.overlaps(B)){
+            batch.draw(gameOver, WIDTH, HEIGHT);
+            end = true;
+        }
+    }
+
     @Override
     public void dispose() {
         batch.dispose();
         img.dispose();
     }
-    
+
     @Override
     public void show() {
     }
-    
+
     @Override
     public void resize(int width, int height) {
         view.update(width, height);
     }
-    
+
     @Override
     public void pause() {
     }
-    
+
     @Override
     public void resume() {
     }
-    
+
     @Override
     public void hide() {
     }
