@@ -93,6 +93,10 @@ public class Background {
         }
 
     }
+/**
+ * This method to dispose the background
+ * 
+ */
 
     public void dispose() {
         background.dispose();
