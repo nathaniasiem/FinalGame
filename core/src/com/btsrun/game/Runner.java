@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -35,6 +36,7 @@ public class Runner {
     //create texture atlas to help load images of character
     private TextureAtlas atlas;
     private float gravity;
+    private Rectangle R;
 
     /**
      * character constructor
@@ -62,6 +64,7 @@ public class Runner {
         //find standing image and load to program
         this.stand = atlas.findRegion("character2");
 
+        //create rectangle 
         //create a run animation by finding each character image
         run = new Animation(1f / 10f, atlas.findRegions("character"));
 
@@ -105,10 +108,9 @@ public class Runner {
 
     }
 
-    //public void collide(Obstacle car) {
-        
-        
-    //}
+    public void collide(Obstacle car) {
+
+    }
 
     /**
      * displays character during the program as animation

@@ -17,6 +17,8 @@ public class Obstacle {
 
     Texture car;
     Texture building;
+    private Rectangle C;
+    private Rectangle B;
     float cx, cy;
     float cx1;
     float bx, by;
@@ -31,10 +33,11 @@ public class Obstacle {
         cx = 0;
         cy = 0;
         cx1 = 0;
-
+        this.C = new Rectangle(cx, cy, car.getWidth(), car.getHeight());
         bx = 0;
         by = 0;
         bx1 = 0;
+        this.B = new Rectangle(bx,by,building.getWidth(),building.getHeight());
         elapsed = 0;
 
     }
@@ -46,10 +49,12 @@ public class Obstacle {
 
     public void randomCar(int cx) {
         cx = (int) (Math.random() * 2);
+        this.C.x = (int) (Math.random() * 2);
     }
 
     public void randomBuild(int bx) {
         bx = (int) (Math.random() * 2);
+        this.B.x = (int) (Math.random() * 2);
     }
 
     public float getCX() {
@@ -75,6 +80,14 @@ public class Obstacle {
         if (bx1 + building.getWidth() < 0) {
             bx1 = bx + building.getWidth();
         }
+        //update collision rectangle car
+        this.cx = this.cx + this.cx1;
+        this.C.setX(this.cx);
+        this.C.setY(this.cy);
+        //update collision rectangle building
+        this.bx = this.bx + this.bx1;
+        this.B.setX(this.bx);
+        this.B.setY(this.by);
     }
 
     public void dispose() {

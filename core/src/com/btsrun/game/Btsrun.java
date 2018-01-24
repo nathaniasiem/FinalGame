@@ -43,12 +43,12 @@ public class Btsrun implements Screen {
         musicPlay.play();
     }
     
-   public void collide(){
-       if(p1.getX() == trouble.bx){
+ //  public void collide(){
+      // if(p1.getX() == trouble.bx){
+         // car.overl 
            
-           
-       }
-  }
+    //   }
+ // }
     
     @Override
     public void render(float deltaTime) {
