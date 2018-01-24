@@ -77,6 +77,9 @@ public class Runner {
 
         //create the forward animation
         runR = new Animation(1f / 10f, runRFrames);
+
+        //
+        this.R = new Rectangle(x, y, stand.getRegionWidth(), stand.getRegionHeight());
     }
 
     public float getX() {
@@ -108,8 +111,12 @@ public class Runner {
 
     }
 
-    public void collide(Obstacle car) {
+    public boolean collide(Rectangle C) {
 
+        if (C.overlaps(R)) {
+            return true;
+        }
+        return false;
     }
 
     /**

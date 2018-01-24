@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -20,6 +21,7 @@ public class Btsrun implements Screen {
     private OrthographicCamera camera;
     private Viewport view;
     private Music musicPlay;
+    private Texture gameOver;
     //create game screen
     private final int HEIGHT = 300;
     private final int WIDTH = 800;
@@ -39,16 +41,11 @@ public class Btsrun implements Screen {
         
         p1 = new Runner(0, 0);
         trouble = new Obstacle();
+       
         musicPlay = Gdx.audio.newMusic(Gdx.files.internal("RUN.mp3"));
         musicPlay.play();
     }
     
- //  public void collide(){
-      // if(p1.getX() == trouble.bx){
-         // car.overl 
-           
-    //   }
- // }
     
     @Override
     public void render(float deltaTime) {
@@ -56,6 +53,9 @@ public class Btsrun implements Screen {
         p1.update(deltaTime);
         img.update(deltaTime);
         trouble.update(deltaTime);
+        if(p1.collide(Rectangle.tmp)){
+            gameOver = gameOver;
+        }
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //moves the camera view with player
         if (p1.getX() > 410) {
