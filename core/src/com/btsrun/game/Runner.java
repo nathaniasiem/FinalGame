@@ -121,6 +121,7 @@ public class Runner {
             this.x = this.x + this.dx;
             this.y = this.y + this.dy;
         }
+        //the player will go down 
             this.dy -= gravity;
         }
        
