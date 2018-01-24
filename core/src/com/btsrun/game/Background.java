@@ -28,9 +28,10 @@ public class Background {
     private final int speed = 100;
 
     public Background() {
+        //loading the image for the background
         background = new Texture(Gdx.files.internal("seoul.png"));
         
-
+        //the x and y axis coordinate for the background
         bgX1 = 0;
         bgY2 = 0;
         
