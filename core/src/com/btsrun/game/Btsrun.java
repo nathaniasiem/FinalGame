@@ -10,14 +10,23 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Btsrun implements Screen {
+    
     //create player variable
-
     private Runner p1;
+    
+    //SpriteBatch for the runner
     SpriteBatch batch;
+    
+    //Call in the class for the background
     private Background img;
+    
+    //Varaible for the camera
     private OrthographicCamera camera;
+    
+    //The Viewport for the camera
     private Viewport view;
-    //create game screen
+    
+    //Varaible for the Height and Width of the Game Screen
     private final int HEIGHT = 300;
     private final int WIDTH = 800;
     
@@ -25,15 +34,19 @@ public class Btsrun implements Screen {
         //initialize Sprite Batch
         this.batch = game.getBatch();
         
+        //initialize the camera
         this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //centre camera view
+        
+        //Centre camera view
         this.camera.position.set(WIDTH / 2, HEIGHT / 2, 0);
         this.camera.update();
         this.view = new FitViewport(WIDTH, HEIGHT, camera);
         view.apply();
         
+        //intialize the background varaible
         img = new Background();
         
+        //intialize the runner varaible
         p1 = new Runner(0, 0);
         
     }
@@ -41,6 +54,7 @@ public class Btsrun implements Screen {
     @Override
     public void render(float deltaTime) {
         
+        //update the player
         p1.update(deltaTime);
         img.update(deltaTime);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
