@@ -15,13 +15,16 @@ public class btsgame extends Game {
     
     private SpriteBatch batch;
     
+    /**
+     * set up game screen
+     */
     @Override
     public void create() {
         batch = new SpriteBatch();
         Btsrun game = new Btsrun(this);
         this.setScreen(game);
     }
-    
+
     public SpriteBatch getBatch(){
         return batch;
     }

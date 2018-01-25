@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 /*
  * To change this template, choose Tools | Templates
@@ -14,18 +15,30 @@ import com.badlogic.gdx.math.Rectangle;
  * @author simon7323
  */
 public class Obstacle {
-
+    //image for obstacle
     Texture car;
     Texture building;
+    
+    //rectangle for obstacles to help collsion
     private Rectangle C;
     private Rectangle B;
+    
+    //coordinates of obstacles
+    //car
     float cx, cy;
     float cx1;
+    //building
     float bx, by;
     float bx1;
+    
+    //randomizer
     public static int randNum;
+    
+    //time of program running
     private float elapsed;
-    private final int speed = 300;
+    
+    //speed of game
+    private int speed = 300;
 
     public Obstacle() {
         car = new Texture(Gdx.files.internal("Car.png"));
@@ -37,7 +50,7 @@ public class Obstacle {
         bx = 0;
         by = 0;
         bx1 = 0;
-        this.B = new Rectangle(bx,by,building.getWidth(),building.getHeight());
+        this.B = new Rectangle(bx, by, building.getWidth(), building.getHeight());
         elapsed = 0;
 
     }
@@ -81,13 +94,35 @@ public class Obstacle {
             bx1 = bx + building.getWidth();
         }
         //update collision rectangle car
-        this.cx = this.cx + this.cx1;
-        this.C.setX(this.cx);
-        this.C.setY(this.cy);
+        C.setPosition(cx, cy);
         //update collision rectangle building
-        this.bx = this.bx + this.bx1;
-        this.B.setX(this.bx);
-        this.B.setY(this.by);
+        B.setPosition(bx, by);
+    }
+
+    public Rectangle getC() {
+        return C;
+    }
+
+    public Rectangle getB() {
+        return B;
+    }
+    public int getSpeed(){
+        return speed;
+    }
+    public boolean collidesCar(Runner R) {
+
+        if (C.overlaps(R.getR())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean collidesBuilding(Runner R) {
+        if (B.overlaps(R.getR())) {
+            return true;
+        }
+        return false;
     }
 
     public void dispose() {

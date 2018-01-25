@@ -1,8 +1,6 @@
 package com.btsrun.game;
 
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -14,61 +12,41 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  *
  * @author simon7323
  */
-public class GameOver implements Screen {
+public class GameOver {
 
+    //initial variable of game over screen
     Texture gameOver;
-    float x,y;
+    float x, y;
 
+    /**
+     * game over screen constructor
+     */
     public GameOver() {
-         gameOver = new Texture(Gdx.files.internal("images.png"));
+        gameOver = new Texture(Gdx.files.internal("images.png"));
     }
-     public float getX() {
+
+    public float getX() {
         return x;
     }
 
     public float getY() {
         return y;
     }
-    public void render(SpriteBatch batch){
-        batch.draw(gameOver, x, y);
+
+    /**
+     *
+     * @param batch- draw out game over image
+     */
+    public void render(SpriteBatch batch) {
+        batch.draw(gameOver, 300, 80);
     }
+
+    /**
+     * gets rid of heavy objects
+     */
     public void dispose() {
         gameOver.dispose();
-        
 
     }
 
-    @Override
-    public void show() {
-       
-    }
-
-    public void render() {
-        
-    }
-
-    @Override
-    public void resize(int i, int i1) {
-        
-    }
-
-    @Override
-    public void pause() {
-        
-    }
-    @Override
-    public void resume() {
-      
-    }
-
-    @Override
-    public void hide() {
-  
-    }
-
-    @Override
-    public void render(float f) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    }
+}

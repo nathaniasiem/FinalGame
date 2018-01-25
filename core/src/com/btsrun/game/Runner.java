@@ -20,22 +20,30 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Runner {
     //character location
-
     private float x;
     private float y;
+    
     //character animation
     private float dx;
     private float dy;
+    
     //time of program running
     private float elapsed;
+    
     //animation variables to allow player movement
     private Animation<TextureRegion> run;
     private Animation<TextureRegion> runR;
+    
     //pictures of standing character
     private TextureRegion stand;
+    
     //create texture atlas to help load images of character
     private TextureAtlas atlas;
+    
+    //gravity variable
     private float gravity;
+    
+    //rectangle 
     private Rectangle R;
 
     /**
@@ -52,7 +60,8 @@ public class Runner {
         //character standing position
         this.dx = 0;
         this.dy = 0;
-
+        
+        //gravity of player
         this.gravity = 0.7f;
 
         //no animation at starting point
@@ -64,7 +73,6 @@ public class Runner {
         //find standing image and load to program
         this.stand = atlas.findRegion("character2");
 
-        //create rectangle 
         //create a run animation by finding each character image
         run = new Animation(1f / 10f, atlas.findRegions("character"));
 
@@ -78,14 +86,23 @@ public class Runner {
         //create the forward animation
         runR = new Animation(1f / 10f, runRFrames);
         runR.setPlayMode(Animation.PlayMode.LOOP);
-        //
-        this.R = new Rectangle(x, y, runR.getKeyFrame(elapsed,true).getTexture().getWidth(),runR.getKeyFrame(elapsed,true).getTexture().getHeight());
+        
+        //initialize the player rectangle
+        this.R = new Rectangle(x, y, runR.getKeyFrame(elapsed, true).getTexture().getWidth(), runR.getKeyFrame(elapsed, true).getTexture().getHeight());
     }
 
+    /**
+     *
+     * @return x position of player
+     */
     public float getX() {
         return x;
     }
 
+    /**
+     *
+     * @return y position of player
+     */
     public float getY() {
         return y;
     }
@@ -96,10 +113,13 @@ public class Runner {
      * @param deltaTime
      */
     public void update(float deltaTime) {
+        //animation of player
         this.elapsed = this.elapsed + deltaTime;
-
         this.y = 0;
-
+        //initialize rectangle position
+        R.setPosition(x, y);
+        //when spacebar is pressed
+        //player jumps
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             this.dy = 80;
             this.dy += gravity;
@@ -108,10 +128,17 @@ public class Runner {
 
         }
         this.dy -= gravity;
-        R.setPosition(x, y);
+
     }
 
-   
+    /**
+     *
+     * @return player rectangle coordinate for collision
+     */
+    public Rectangle getR() {
+        return R;
+    }
+
     /**
      * displays character during the program as animation
      *
@@ -122,7 +149,9 @@ public class Runner {
 
     }
 
-    // get rid of heavy objects
+    /**
+     * get rid of heavy objects
+     */
     public void dispose() {
         atlas.dispose();
     }
