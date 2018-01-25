@@ -10,10 +10,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import java.awt.Font;
 
 public class Btsrun implements Screen {
     //create player variable
-
     private Runner p1;
     SpriteBatch batch;
     private Background img;
@@ -21,6 +22,9 @@ public class Btsrun implements Screen {
     private OrthographicCamera camera;
     private Viewport view;
     private Music musicPlay;
+    private int score;
+    private String scoreCount;
+    BitmapFont scoreFont;
     private Texture gameOver;
     //create game screen
     private final int HEIGHT = 300;
@@ -83,6 +87,8 @@ public class Btsrun implements Screen {
         if (R.overlaps(C)) {
             batch.draw(gameOver, WIDTH, HEIGHT); 
             end = true;
+            
+            
         }else if(R.overlaps(B)){
             batch.draw(gameOver, WIDTH, HEIGHT);
             end = true;

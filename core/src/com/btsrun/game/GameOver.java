@@ -2,6 +2,7 @@ package com.btsrun.game;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -13,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  *
  * @author simon7323
  */
-public class GameOver {
+public class GameOver implements Screen {
 
     Texture gameOver;
     float x,y;
@@ -35,6 +36,39 @@ public class GameOver {
         gameOver.dispose();
         
 
+    }
+
+    @Override
+    public void show() {
+       
+    }
+
+    public void render() {
+        
+    }
+
+    @Override
+    public void resize(int i, int i1) {
+        
+    }
+
+    @Override
+    public void pause() {
+        
+    }
+    @Override
+    public void resume() {
+      
+    }
+
+    @Override
+    public void hide() {
+  
+    }
+
+    @Override
+    public void render(float f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     }

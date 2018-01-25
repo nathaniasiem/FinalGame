@@ -77,9 +77,9 @@ public class Runner {
 
         //create the forward animation
         runR = new Animation(1f / 10f, runRFrames);
-
+        runR.setPlayMode(Animation.PlayMode.LOOP);
         //
-        this.R = new Rectangle(x, y, stand.getRegionWidth(), stand.getRegionHeight());
+        this.R = new Rectangle(x, y, runR.getKeyFrame(elapsed,true).getTexture().getWidth(),runR.getKeyFrame(elapsed,true).getTexture().getHeight());
     }
 
     public float getX() {
@@ -108,7 +108,7 @@ public class Runner {
 
         }
         this.dy -= gravity;
-
+        R.setPosition(x, y);
     }
 
    
